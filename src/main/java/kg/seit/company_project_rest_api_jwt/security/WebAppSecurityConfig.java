@@ -2,7 +2,7 @@ package kg.seit.company_project_rest_api_jwt.security;
 
 import kg.seit.company_project_rest_api_jwt.exceptions.NotFoundException;
 import kg.seit.company_project_rest_api_jwt.jwt.JwtConfig;
-import kg.seit.company_project_rest_api_jwt.jwt.JwtTokenVerifier;
+import kg.seit.company_project_rest_api_jwt.jwt.JwtTokenFilter;
 import kg.seit.company_project_rest_api_jwt.jwt.JwtUtils;
 import kg.seit.company_project_rest_api_jwt.repo.UserRepository;
 import lombok.AllArgsConstructor;
@@ -32,7 +32,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
         securedEnabled = true
 )
 @AllArgsConstructor
-public class WebAppSecurity extends WebSecurityConfigurerAdapter {
+public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserRepository authInfoRepository;
     private final JwtConfig jwtConfig;
@@ -68,7 +68,7 @@ public class WebAppSecurity extends WebSecurityConfigurerAdapter {
                 .permitAll();
 
         http.addFilterBefore(
-                new JwtTokenVerifier(
+                new JwtTokenFilter(
                         jwtConfig,
                         jwtUtils,
                         getUserDetailsService()),

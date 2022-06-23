@@ -18,7 +18,7 @@ import java.io.IOException;
  * @author seiitbeknarynbaev
  */
 @AllArgsConstructor
-public class JwtTokenVerifier extends OncePerRequestFilter {
+public class JwtTokenFilter extends OncePerRequestFilter {
 
     private final JwtConfig jwtConfig;
     private final JwtUtils jwtUtils;
