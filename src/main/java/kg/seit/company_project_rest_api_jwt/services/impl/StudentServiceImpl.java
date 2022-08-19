@@ -42,6 +42,7 @@ public class StudentServiceImpl implements StudentService {
         studentRequestDto.setGroup(groupRepository.getById(studentRequestDto.getGroupId()));
         Student student = studentMapper.convert(studentRequestDto);
         Student student1 = studentRepository.save(student);
+
         return studentMapper.deConvert(student1);
     }
 
